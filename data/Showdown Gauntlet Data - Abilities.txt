@@ -1,0 +1,5 @@
+Name,Type,Damage,Cost
+Firebolt,Fire,5,1
+Ice Storm,Water,10,3
+Grass Knot,Earth,3,0
+Psionic Blast,Psychic,12,4
