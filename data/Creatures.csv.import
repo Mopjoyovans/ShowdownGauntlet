@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bux6hptwlavp7"
+
+[deps]
+
+files=["res://data/Creatures.Type.translation", "res://data/Creatures.HP.translation", "res://data/Creatures.Attack.translation", "res://data/Creatures.Defense.translation", "res://data/Creatures.Endurance.translation", "res://data/Creatures.Magic.translation", "res://data/Creatures.Resistance.translation", "res://data/Creatures.Speed.translation", "res://data/Creatures.Tags.translation"]
+
+source_file="res://data/Creatures.csv"
+dest_files=["res://data/Creatures.Type.translation", "res://data/Creatures.HP.translation", "res://data/Creatures.Attack.translation", "res://data/Creatures.Defense.translation", "res://data/Creatures.Endurance.translation", "res://data/Creatures.Magic.translation", "res://data/Creatures.Resistance.translation", "res://data/Creatures.Speed.translation", "res://data/Creatures.Tags.translation"]
+
+[params]
+
+compress=true
+delimiter=0
