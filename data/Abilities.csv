@@ -1,4 +1,4 @@
-﻿Name,Type,Damage,Cost,Tags
+﻿name,type,damage,cost,tags
 Firebolt,Fire,5,0,Fire
 Ice Storm,Water,10,2,Water
 Psionic Blast,Psychic,12,3,Psychic

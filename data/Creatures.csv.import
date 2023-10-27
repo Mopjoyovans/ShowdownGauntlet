@@ -6,10 +6,10 @@ uid="uid://bux6hptwlavp7"
 
 [deps]
 
-files=["res://data/Creatures.Type.translation", "res://data/Creatures.HP.translation", "res://data/Creatures.Attack.translation", "res://data/Creatures.Defense.translation", "res://data/Creatures.Endurance.translation", "res://data/Creatures.Magic.translation", "res://data/Creatures.Resistance.translation", "res://data/Creatures.Speed.translation", "res://data/Creatures.Tags.translation"]
+files=["res://data/Creatures.type.translation", "res://data/Creatures.hp.translation", "res://data/Creatures.attack.translation", "res://data/Creatures.defense.translation", "res://data/Creatures.endurance.translation", "res://data/Creatures.magic.translation", "res://data/Creatures.resistance.translation", "res://data/Creatures.speed.translation", "res://data/Creatures.tags.translation"]
 
 source_file="res://data/Creatures.csv"
-dest_files=["res://data/Creatures.Type.translation", "res://data/Creatures.HP.translation", "res://data/Creatures.Attack.translation", "res://data/Creatures.Defense.translation", "res://data/Creatures.Endurance.translation", "res://data/Creatures.Magic.translation", "res://data/Creatures.Resistance.translation", "res://data/Creatures.Speed.translation", "res://data/Creatures.Tags.translation"]
+dest_files=["res://data/Creatures.type.translation", "res://data/Creatures.hp.translation", "res://data/Creatures.attack.translation", "res://data/Creatures.defense.translation", "res://data/Creatures.endurance.translation", "res://data/Creatures.magic.translation", "res://data/Creatures.resistance.translation", "res://data/Creatures.speed.translation", "res://data/Creatures.tags.translation"]
 
 [params]
 

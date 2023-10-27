@@ -1,4 +1,4 @@
-﻿Name,Type,HP,Attack,Defense,Endurance,Magic,Resistance,Speed,Tags
+﻿name,type,hp,attack,defense,endurance,magic,resistance,speed,tags
 Abra,Psychic,40,5,10,5,35,25,30,Psychic
 Squirtle,Water,30,15,25,25,10,35,10,Water
 Charmander,Fire,50,30,15,10,20,10,25,Fire

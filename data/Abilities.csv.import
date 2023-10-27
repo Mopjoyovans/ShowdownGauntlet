@@ -6,10 +6,10 @@ uid="uid://dasp4k6w1ip4u"
 
 [deps]
 
-files=["res://data/Abilities.Type.translation", "res://data/Abilities.Damage.translation", "res://data/Abilities.Cost.translation", "res://data/Abilities.Tags.translation"]
+files=["res://data/Abilities.type.translation", "res://data/Abilities.damage.translation", "res://data/Abilities.cost.translation", "res://data/Abilities.tags.translation"]
 
 source_file="res://data/Abilities.csv"
-dest_files=["res://data/Abilities.Type.translation", "res://data/Abilities.Damage.translation", "res://data/Abilities.Cost.translation", "res://data/Abilities.Tags.translation"]
+dest_files=["res://data/Abilities.type.translation", "res://data/Abilities.damage.translation", "res://data/Abilities.cost.translation", "res://data/Abilities.tags.translation"]
 
 [params]
 

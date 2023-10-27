@@ -9,7 +9,7 @@ script = ExtResource("1_xfq6m")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_2icu7")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_xoc7p")
 hframes = 8
 vframes = 22

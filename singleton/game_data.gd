@@ -38,7 +38,7 @@ func load_csv_data(path: String):
 				for label in headers:
 					csv_line[label] = data_set[index]
 					index += 1
-				data[csv_line["Name"]] = csv_line
+				data[csv_line["name"]] = csv_line
 		file.close()
 		
 #		print(data)
