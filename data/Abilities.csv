@@ -1,4 +1,15 @@
 ﻿name,type,damage,cost,tags
-Firebolt,Fire,5,0,Fire
-Ice Storm,Water,10,2,Water
-Psionic Blast,Psychic,12,3,Psychic
+Fireball,Fire,20,0,Fire
+Frostbite,Water,20,0,Water
+Psionic Blast,Psychic,20,0,Psychic
+Lightning Bolt,Lightning,20,0,Lightning
+Smite,Holy,20,0,Holy
+Blight,Necrotic,20,0,Necrotic
+Sonic Boom,Air,20,0,Air
+Boulder,Earth,20,0,Earth
+Sludge,Poison,20,0,Poison
+Acid Splash,Acid,20,0,Acid
+Prismatic Spray,Fey,20,0,Fey
+Sword Slash,Slashing,20,0,Slashing
+Hammer Slam,Bludgeoning,20,0,Bludgeoning
+Spear Thrust,Piercing,20,0,Piercing

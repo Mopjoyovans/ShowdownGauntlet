@@ -10,8 +10,8 @@ extends Node
 func _ready():
 #	print(GameData.abilities)
 #	print(GameData.creatures)
-	populate_creature_data("Squirtle", true)
-	populate_creature_data("Charmander", false)
+	populate_creature_data("Salamander", true)
+	populate_creature_data("Archon", false)
 	
 	
 func populate_creature_data(creature_name: String, is_player: bool) -> void:
