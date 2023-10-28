@@ -4,9 +4,10 @@
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ukojv"]
 [ext_resource type="PackedScene" uid="uid://i0la5munbvb8" path="res://scenes/creature/creature.tscn" id="2_q5241"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" node_paths=PackedStringArray("battle_scene")]
 script = ExtResource("1_ukojv")
 creature_scene = ExtResource("2_q5241")
+battle_scene = NodePath("Battle")
 
 [node name="Battle" parent="." instance=ExtResource("1_1tdvl")]
 

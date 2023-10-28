@@ -9,4 +9,4 @@ class_name Ability
 
 
 func use_ability():
-	pass
+	print(str("use ability ", ability_name))
