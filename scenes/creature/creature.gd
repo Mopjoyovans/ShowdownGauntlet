@@ -8,6 +8,7 @@ var endurance: int = 50
 var magic: int = 50
 var resistance: int = 50
 var speed: int = 50
+var abilities: Array
 
 @onready var health_component = $HealthComponent
 @onready var sprite = $Sprite
@@ -30,6 +31,7 @@ func hydrate_creature_data(creature_name: String, is_player: bool) -> Creature:
 	magic = int(creature_data.magic)
 	resistance = int(creature_data.resistance)
 	speed = int(creature_data.speed)
+	abilities = populate_abilities(creature_data.abilities)
 
 	health_component.max_health = float(creature_data.hp)
 	health_component.current_health = health_component.max_health
@@ -43,3 +45,13 @@ func hydrate_creature_data(creature_name: String, is_player: bool) -> Creature:
 		sprite.frame = 9
 	
 	return self
+
+
+func populate_abilities(ability_data) -> Array:
+	var abilities: Array = []
+	var ability_names = ability_data.split(", ")
+	
+	for ability_name in ability_names:
+		abilities.push_front(GameData.abilities[ability_name])
+		
+	return abilities

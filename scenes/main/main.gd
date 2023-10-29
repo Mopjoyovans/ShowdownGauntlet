@@ -17,7 +17,7 @@ func _ready():
 	
 	
 func populate_creature_data(creature_name: String, is_player: bool) -> void:
-	var creature = creature_scene.instantiate()
+	var creature = creature_scene.instantiate() as Creature
 	creature.init_child_refs()
 	creature.hydrate_creature_data(creature_name, is_player)
 	

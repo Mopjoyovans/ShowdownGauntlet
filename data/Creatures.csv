@@ -1,6 +1,6 @@
 ﻿name,type,hp,attack,defense,endurance,magic,resistance,speed,tags,abilities
-Salamander,Fire,50,80,25,20,60,50,80,Fire,"Fireball (https://www.notion.so/Fireball-94a2a26bef8d4d1db759de9f38b8fd83?pvs=21), Hammer Slam (https://www.notion.so/Hammer-Slam-36dc98412aa84441b531dc279979e465?pvs=21), Spear Thrust (https://www.notion.so/Spear-Thrust-fb7ca45c0227409383bcb53954a80b00?pvs=21), Boulder (https://www.notion.so/Boulder-d0d2a1ee31ab4b4b90fca064ddb4f44d?pvs=21)"
-Archon,Holy,50,60,60,40,60,60,50,Holy,"Smite (https://www.notion.so/Smite-a2ba9e64a9544cd0b51c3d9436ee83e6?pvs=21), Hammer Slam (https://www.notion.so/Hammer-Slam-36dc98412aa84441b531dc279979e465?pvs=21), Spear Thrust (https://www.notion.so/Spear-Thrust-fb7ca45c0227409383bcb53954a80b00?pvs=21), Sword Slash (https://www.notion.so/Sword-Slash-a322b2f80b154e628838093f317382d6?pvs=21)"
+Salamander,Fire,50,80,25,20,60,50,80,Fire,"Fireball, Blight, Sludge, Boulder"
+Archon,Holy,50,60,60,40,60,60,50,Holy,"Smite, Fireball, Sludge"
 Shadow,Necrotic,50,35,30,50,75,80,60,Necrotic,
 Gebbu,Earth,80,80,90,80,15,20,10,Earth,
 Grippel,Water,40,60,35,40,60,70,85,Water,
