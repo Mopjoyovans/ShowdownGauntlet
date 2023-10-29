@@ -3,11 +3,22 @@ extends Button
 
 var ability: Ability
 
+@onready var info_label = %InfoLabel
+
 
 func _ready():
 	self.pressed.connect(on_pressed)
+	self.mouse_entered.connect(on_hover)
+	self.mouse_exited.connect(on_blur)
 
 
 func on_pressed():
-	print(str("pressed button ", ability.ability_name))
-#	get_node("/root/BattleScene").cur_char.cast_combat_action(combat_action)
+	ability.use_ability()
+
+
+func on_hover():
+	info_label.text = ability.display_information()
+
+
+func on_blur():
+	info_label.text = ""

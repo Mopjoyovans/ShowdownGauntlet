@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_bhm8p"]
 [ext_resource type="PackedScene" uid="uid://2efjujnnv734" path="res://scenes/ability/ability.tscn" id="2_evf4p"]
-[ext_resource type="Script" path="res://scenes/battle/ability_button.gd" id="2_jmbid"]
+[ext_resource type="PackedScene" uid="uid://cipsf67vp3tk1" path="res://scenes/battle/ability_button.tscn" id="3_7i80m"]
 
 [node name="Battle" type="CanvasLayer"]
 script = ExtResource("1_bhm8p")
@@ -55,32 +55,20 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/AbilityPanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AbilityButton1" type="Button" parent="Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="AbilityButton1" parent="Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_7i80m")]
 layout_mode = 2
-text = "Tornado"
-script = ExtResource("2_jmbid")
 
-[node name="AbilityButton2" type="Button" parent="Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="AbilityButton2" parent="Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_7i80m")]
 layout_mode = 2
-text = "Tornado 2"
-script = ExtResource("2_jmbid")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/AbilityPanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AbilityButton3" type="Button" parent="Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(200, 0)
+[node name="AbilityButton3" parent="Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("3_7i80m")]
 layout_mode = 2
-text = "Tornado 3"
-script = ExtResource("2_jmbid")
 
-[node name="AbilityButton4" type="Button" parent="Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(200, 0)
+[node name="AbilityButton4" parent="Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("3_7i80m")]
 layout_mode = 2
-text = "Tornado 4"
-script = ExtResource("2_jmbid")
 
 [node name="InfoPanelContainer" type="PanelContainer" parent="Control"]
 custom_minimum_size = Vector2(220, 112)
@@ -91,3 +79,15 @@ anchor_bottom = 1.0
 offset_top = -96.0
 offset_right = 200.0
 grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/InfoPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="InfoLabel" type="Label" parent="Control/InfoPanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1

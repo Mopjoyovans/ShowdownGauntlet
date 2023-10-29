@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cipsf67vp3tk1"]
+
+[ext_resource type="Script" path="res://scenes/battle/ability_button.gd" id="1_jxlvy"]
+
+[node name="AbilityButton" type="Button"]
+custom_minimum_size = Vector2(200, 0)
+text = "Tornado"
+script = ExtResource("1_jxlvy")

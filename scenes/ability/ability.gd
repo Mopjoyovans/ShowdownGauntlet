@@ -19,3 +19,7 @@ func hydrate_ability_data(ability_name: String) -> Ability:
 
 func use_ability():
 	print(str("use ability ", ability_name))
+
+
+func display_information() -> String:
+	return str(ability_name, "\nType: ", type, "\nDamage: ", damage, "\nCost: ", cost)

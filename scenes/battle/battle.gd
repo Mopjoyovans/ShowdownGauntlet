@@ -30,8 +30,6 @@ func populate_abilities():
 		button_node.text = current_creature.abilities[index].name
 
 		var ability = ability_scene.instantiate() as Ability
-		ability = ability.hydrate_ability_data(current_creature.abilities[index].name)
-		button_node.ability = ability
-		print(ability.ability_name)
+		button_node.ability = ability.hydrate_ability_data(current_creature.abilities[index].name)
 
 		index += 1
