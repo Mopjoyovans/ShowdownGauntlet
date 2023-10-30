@@ -12,15 +12,20 @@ var abilities: Array
 
 @onready var health_component = $HealthComponent
 @onready var sprite = $Sprite
+@onready var health_bar = %HealthBar
+@onready var panel_container = $PanelContainer
 
 
 func _ready():
+	health_component.health_changed.connect(on_health_changed)
 	init_child_refs()
+	update_health_display()
 
 
 func init_child_refs():
 	health_component = $HealthComponent
 	sprite = $Sprite
+	panel_container = $PanelContainer
 
 
 func hydrate_creature_data(creature_name: String, is_player: bool) -> Creature:
@@ -37,12 +42,14 @@ func hydrate_creature_data(creature_name: String, is_player: bool) -> Creature:
 	health_component.current_health = health_component.max_health
 	
 	if is_player:
-		sprite.position.x = 60
-		sprite.position.y = 120
+		position.x = 80
+		position.y = 190
 	else:
-		sprite.position.x = 260
-		sprite.position.y = 50
+		position.x = 560
+		position.y = 60
 		sprite.frame = 9
+		panel_container.position.x = -150
+		panel_container.position.y = 50
 	
 	return self
 
@@ -55,3 +62,11 @@ func populate_abilities(ability_data) -> Array:
 		abilities.push_front(GameData.abilities[ability_name])
 		
 	return abilities
+
+
+func update_health_display():
+	health_bar.value = health_component.get_health_percent()
+
+
+func on_health_changed():
+	update_health_display()
