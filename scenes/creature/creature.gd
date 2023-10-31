@@ -17,6 +17,7 @@ var abilities: Array
 
 
 func _ready():
+	GameEvents.used_ability.connect(on_ability_used)
 	health_component.health_changed.connect(on_health_changed)
 	init_child_refs()
 	update_health_display()
@@ -70,3 +71,7 @@ func update_health_display():
 
 func on_health_changed():
 	update_health_display()
+
+
+func on_ability_used(ability: Ability):
+	pass
