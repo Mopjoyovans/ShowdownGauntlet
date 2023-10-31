@@ -72,15 +72,17 @@ func damage(damage_amount: float):
 func create_player_nameplate():
 	position.x = 80
 	position.y = 190
+	panel_container.position.x = 50
+	panel_container.position.y = -19
 	populate_nameplate()
 
 
 func create_enemy_nameplate():
-	position.x = 560
+	position.x = 380
 	position.y = 60
 	sprite.frame = 9
-	panel_container.position.x = -150
-	panel_container.position.y = 50
+	panel_container.position.x = -250
+	panel_container.position.y = -51
 	populate_nameplate()
 	
 	

@@ -9,7 +9,7 @@
 script = ExtResource("1_bhm8p")
 ability_scene = ExtResource("2_evf4p")
 creature_scene = ExtResource("3_wxd4j")
-ability_buttons = [NodePath("BattleUI/Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AbilityButton1"), NodePath("BattleUI/Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AbilityButton2"), NodePath("BattleUI/Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AbilityButton3"), NodePath("BattleUI/Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AbilityButton4")]
+ability_buttons = [NodePath("BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AbilityButton1"), NodePath("BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AbilityButton2"), NodePath("BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AbilityButton3"), NodePath("BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/AbilityButton4")]
 
 [node name="BattleUI" type="CanvasLayer" parent="."]
 
@@ -26,6 +26,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 8
@@ -33,65 +35,69 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="AbilityPanelContainer" type="PanelContainer" parent="BattleUI/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleUI/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BattlePanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(440, 240)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextLogPanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AbilityPanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(416, 100)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -400.0
-offset_top = -96.0
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="BattleUI/Control/AbilityPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BattleUI/Control/AbilityPanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BattleUI/Control/AbilityPanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AbilityButton1" parent="BattleUI/Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_7i80m")]
+[node name="AbilityButton1" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_7i80m")]
 layout_mode = 2
 
-[node name="AbilityButton2" parent="BattleUI/Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_7i80m")]
+[node name="AbilityButton2" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_7i80m")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="BattleUI/Control/AbilityPanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AbilityButton3" parent="BattleUI/Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("3_7i80m")]
+[node name="AbilityButton3" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("3_7i80m")]
 layout_mode = 2
 
-[node name="AbilityButton4" parent="BattleUI/Control/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("3_7i80m")]
+[node name="AbilityButton4" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityPanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("3_7i80m")]
 layout_mode = 2
 
-[node name="InfoPanelContainer" type="PanelContainer" parent="BattleUI/Control"]
-custom_minimum_size = Vector2(220, 112)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -96.0
-offset_right = 200.0
-grow_vertical = 0
+[node name="AbilityInfoPanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="BattleUI/Control/InfoPanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityInfoPanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="InfoLabel" type="Label" parent="BattleUI/Control/InfoPanelContainer/MarginContainer"]
+[node name="InfoLabel" type="Label" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer2/AbilityInfoPanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
