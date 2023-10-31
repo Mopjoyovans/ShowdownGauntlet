@@ -8,12 +8,12 @@ var damage: float = 10.0
 var cost: float = 1.0
 
 
-func hydrate_ability_data(ability_name: String) -> Ability:
-	var ability_data = GameData.abilities[ability_name]
-	self.ability_name = ability_data.name
-	self.type = ability_data.type
-	self.damage = float(ability_data.damage)
-	self.cost = float(ability_data.cost)
+func hydrate_ability_data(ability_name_key: String) -> Ability:
+	var ability_data = GameData.abilities[ability_name_key]
+	ability_name = ability_data.name
+	type = ability_data.type
+	damage = float(ability_data.damage)
+	cost = float(ability_data.cost)
 	return self
 
 
