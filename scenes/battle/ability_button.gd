@@ -13,8 +13,7 @@ func _ready():
 
 
 func on_pressed():
-#	GameEvents.emit_used_ability(ability)
-	ability.use_ability()
+	ability.use_ability(true)
 
 
 func on_hover():

@@ -7,14 +7,16 @@ class_name Battle
 @export var ability_buttons: Array
 
 var current_creature: Creature
+var active_enemy: Creature
+var active_player: Creature
 
-@onready var ability_panel_container = %AbilityPanelContainer
-@onready var info_panel_container = %InfoPanelContainer
 @onready var player_team = $PlayerTeam
 @onready var enemy_team = $EnemyTeam
 
 
 func _ready():
+	GameEvents.ability_used_on_enemy.connect(on_ability_used_on_enemy)
+	GameEvents.ability_used_on_player.connect(on_ability_used_on_player)
 	populate_creature_data("Salamander", true)
 	populate_creature_data("Archon", false)
 	populate_abilities()
@@ -26,11 +28,11 @@ func populate_creature_data(creature_name: String, is_player: bool) -> void:
 	creature.hydrate_creature_data(creature_name, is_player)
 	
 	if is_player:
-#		active_player = creature
+		active_player = creature
 		player_team.add_child(creature)
 		set_current_creature(creature)
 	else:
-#		active_enemy = creature
+		active_enemy = creature
 		enemy_team.add_child(creature)
 
 
@@ -52,3 +54,19 @@ func populate_abilities():
 		button_node.ability = ability.hydrate_ability_data(current_creature.abilities[index].name)
 
 		index += 1
+		
+		
+func process_ability(creature: Creature, ability: Ability):
+	creature.damage(ability.damage)
+
+
+func on_ability_used_on_enemy(ability: Ability):
+	if active_enemy == null:
+		return
+	process_ability(active_enemy, ability)
+	
+	
+func on_ability_used_on_player(ability: Ability):
+	if active_player == null:
+		return
+	process_ability(active_player, ability)

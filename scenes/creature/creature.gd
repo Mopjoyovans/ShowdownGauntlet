@@ -17,7 +17,6 @@ var abilities: Array
 
 
 func _ready():
-	GameEvents.used_ability.connect(on_ability_used)
 	health_component.health_changed.connect(on_health_changed)
 	init_child_refs()
 	update_health_display()
@@ -63,6 +62,10 @@ func populate_abilities(ability_data) -> Array:
 		abilities.push_front(GameData.abilities[ability_name])
 		
 	return abilities
+
+
+func damage(damage_amount: float):
+	health_component.damage(damage_amount)
 
 
 func update_health_display():

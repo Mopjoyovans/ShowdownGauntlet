@@ -2,8 +2,6 @@ extends Node
 class_name Ability
 
 
-#signal damaged_opponent
-
 var ability_name: String = "Ability Name"
 var type: String = "Fire"
 var damage: float = 10.0
@@ -19,10 +17,12 @@ func hydrate_ability_data(ability_name: String) -> Ability:
 	return self
 
 
-func use_ability():
+func use_ability(target_is_enemy: bool):
 	print(str("use ability ", ability_name))
-#	if is_player:
-#		damaged_opponent.emit(damage)
+	if target_is_enemy:
+		GameEvents.emit_ability_used_on_enemy(self)
+	else:
+		GameEvents.emit_ability_used_on_player(self)
 		
 
 func display_information() -> String:

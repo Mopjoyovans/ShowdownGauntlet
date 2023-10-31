@@ -34,7 +34,6 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="AbilityPanelContainer" type="PanelContainer" parent="BattleUI/Control"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(416, 100)
 layout_mode = 1
 anchors_preset = 3
@@ -76,7 +75,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="InfoPanelContainer" type="PanelContainer" parent="BattleUI/Control"]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(220, 112)
 layout_mode = 1
 anchors_preset = 2
