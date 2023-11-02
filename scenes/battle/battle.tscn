@@ -1,11 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvxmdknto76t"]
+[gd_scene load_steps=11 format=3 uid="uid://dvxmdknto76t"]
 
 [ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_bhm8p"]
 [ext_resource type="PackedScene" uid="uid://2efjujnnv734" path="res://scenes/ability/ability.tscn" id="2_evf4p"]
 [ext_resource type="PackedScene" uid="uid://cipsf67vp3tk1" path="res://scenes/battle/ability_button.tscn" id="3_7i80m"]
 [ext_resource type="PackedScene" uid="uid://i0la5munbvb8" path="res://scenes/creature/creature.tscn" id="3_wxd4j"]
+[ext_resource type="Texture2D" uid="uid://2c2gy305533y" path="res://assets/creatures/003 Venusaur.png" id="4_lve86"]
 [ext_resource type="Texture2D" uid="uid://dxvwyl1sy3jsl" path="res://assets/object/pokeball.png" id="4_pjt1f"]
+[ext_resource type="Texture2D" uid="uid://b2pew2xi4fd7e" path="res://assets/creatures/009 Blastoise.png" id="5_22gce"]
 [ext_resource type="PackedScene" uid="uid://e3iwx35wb6rm" path="res://scenes/team/team.tscn" id="6_fwkpf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mqtk"]
+bg_color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_165uk"]
+bg_color = Color(0.776471, 0.286275, 0.407843, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.219608, 0.219608, 0.219608, 1)
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_bhm8p")
@@ -49,23 +62,121 @@ custom_minimum_size = Vector2(440, 240)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer"]
+[node name="PlayerCreatureMarginContainer" type="MarginContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PlayerHBoxContainer" type="HBoxContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerCreatureMarginContainer"]
+layout_mode = 2
+
+[node name="PlayerCreatureTexture" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerCreatureMarginContainer/PlayerHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("4_lve86")
+stretch_mode = 4
+
+[node name="PlayerNamePlatePanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerCreatureMarginContainer/PlayerHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="PlayerVBoxContainer" type="VBoxContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerCreatureMarginContainer/PlayerHBoxContainer/PlayerNamePlatePanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="PlayerNameLabel" type="Label" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerCreatureMarginContainer/PlayerHBoxContainer/PlayerNamePlatePanelContainer/PlayerVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bulbasaur"
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerCreatureMarginContainer/PlayerHBoxContainer/PlayerNamePlatePanelContainer/PlayerVBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_6mqtk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_165uk")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="PlayerHPLabel" type="Label" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerCreatureMarginContainer/PlayerHBoxContainer/PlayerNamePlatePanelContainer/PlayerVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20/20"
+horizontal_alignment = 1
+
+[node name="EnemyCreatureMarginContainer" type="MarginContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="EnemyHBoxContainer" type="HBoxContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyCreatureMarginContainer"]
+layout_mode = 2
+
+[node name="EnemyNamePlatePanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyCreatureMarginContainer/EnemyHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="EnemyVBoxContainer" type="VBoxContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyCreatureMarginContainer/EnemyHBoxContainer/EnemyNamePlatePanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="EnemyNameLabel" type="Label" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyCreatureMarginContainer/EnemyHBoxContainer/EnemyNamePlatePanelContainer/EnemyVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bulbasaur"
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyCreatureMarginContainer/EnemyHBoxContainer/EnemyNamePlatePanelContainer/EnemyVBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_6mqtk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_165uk")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="EnemyHPLabel" type="Label" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyCreatureMarginContainer/EnemyHBoxContainer/EnemyNamePlatePanelContainer/EnemyVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20/20"
+horizontal_alignment = 1
+
+[node name="EnemyCreatureTexture" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyCreatureMarginContainer/EnemyHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("5_22gce")
+stretch_mode = 4
+
+[node name="TeamMarginContainer" type="MarginContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer"]
 custom_minimum_size = Vector2(110, 80)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer"]
+[node name="PlayerTeamPanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/TeamMarginContainer"]
 custom_minimum_size = Vector2(110, 80)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="GridContainer" type="GridContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer/PanelContainer"]
+[node name="GridContainer" type="GridContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/TeamMarginContainer/PlayerTeamPanelContainer"]
 custom_minimum_size = Vector2(110, 80)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer/PanelContainer/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/TeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_stretch_ratio = 0.45
@@ -73,7 +184,7 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="TextureRect2" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer/PanelContainer/GridContainer"]
+[node name="TextureRect2" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/TeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_stretch_ratio = 0.45
@@ -81,7 +192,7 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="TextureRect3" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer/PanelContainer/GridContainer"]
+[node name="TextureRect3" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/TeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_stretch_ratio = 0.45
@@ -89,7 +200,7 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="TextureRect4" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer/PanelContainer/GridContainer"]
+[node name="TextureRect4" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/TeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_stretch_ratio = 0.45
@@ -97,17 +208,17 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="PanelContainer2" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer"]
+[node name="EnemyTeamPanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer"]
 custom_minimum_size = Vector2(110, 80)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="GridContainer" type="GridContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PanelContainer2"]
+[node name="GridContainer" type="GridContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyTeamPanelContainer"]
 custom_minimum_size = Vector2(110, 80)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PanelContainer2/GridContainer"]
+[node name="TextureRect" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_stretch_ratio = 0.45
@@ -115,7 +226,7 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="TextureRect2" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PanelContainer2/GridContainer"]
+[node name="TextureRect2" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_stretch_ratio = 0.45
@@ -123,7 +234,7 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="TextureRect3" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PanelContainer2/GridContainer"]
+[node name="TextureRect3" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_stretch_ratio = 0.45
@@ -131,7 +242,7 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="TextureRect4" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PanelContainer2/GridContainer"]
+[node name="TextureRect4" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/EnemyTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_stretch_ratio = 0.45

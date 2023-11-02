@@ -2,6 +2,7 @@ extends Node2D
 class_name Creature
 
 
+# Attributes
 var creature_name: String = "Creature Name"
 var attack: int = 50
 var defense: int = 50
@@ -11,12 +12,12 @@ var resistance: int = 50
 var speed: int = 50
 var abilities: Array
 
+# UI elements
+var health_bar: ProgressBar
+var name_label: Label
+var hp_label: Label
+
 @onready var health_component = $HealthComponent
-@onready var sprite = $Sprite
-@onready var health_bar = %HealthBar
-@onready var panel_container = $PanelContainer
-@onready var name_label = %NameLabel
-@onready var hp_label = %HPLabel
 
 
 func _ready():
@@ -27,10 +28,6 @@ func _ready():
 
 func init_child_refs():
 	health_component = $HealthComponent
-	sprite = $Sprite
-	panel_container = $PanelContainer
-	name_label = %NameLabel
-	hp_label = %HPLabel
 
 
 func hydrate_creature_data(creature_name_key: String, is_player: bool) -> Creature:
@@ -46,12 +43,6 @@ func hydrate_creature_data(creature_name_key: String, is_player: bool) -> Creatu
 
 	health_component.max_health = float(creature_data.hp)
 	health_component.current_health = health_component.max_health
-	
-	if is_player:
-		create_player_nameplate()
-	else:
-		create_enemy_nameplate()
-	
 	return self
 
 
@@ -60,7 +51,6 @@ func populate_abilities(ability_data) -> Array:
 	var ability_names = ability_data.split(", ")
 	
 	for ability_name in ability_names:
-#		print(str('ability', ability_name))
 		if ability_name != "":
 			new_abilities.push_front(GameData.abilities[ability_name])
 		
@@ -70,25 +60,8 @@ func populate_abilities(ability_data) -> Array:
 func damage(damage_amount: float):
 	health_component.damage(damage_amount)
 
-
-func create_player_nameplate():
-	position.x = 80
-	position.y = 190
-	panel_container.position.x = 50
-	panel_container.position.y = -19
-	populate_nameplate()
-
-
-func create_enemy_nameplate():
-	position.x = 380
-	position.y = 60
-	sprite.frame = 9
-	panel_container.position.x = -250
-	panel_container.position.y = -51
-	populate_nameplate()
 	
-	
-func populate_nameplate():
+func update_nameplate():
 	name_label.text = creature_name
 	hp_label.text = str(health_component.current_health, "/", health_component.max_health)
 

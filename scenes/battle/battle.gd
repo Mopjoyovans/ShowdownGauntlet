@@ -12,6 +12,12 @@ var active_player: Creature
 
 @onready var player_team: Team = $PlayerTeam
 @onready var enemy_team: Team = $EnemyTeam
+@onready var player_name_label = %PlayerNameLabel
+@onready var player_health_bar = %PlayerHealthBar
+@onready var player_hp_label = %PlayerHPLabel
+@onready var enemy_name_label = %EnemyNameLabel
+@onready var enemy_health_bar = %EnemyHealthBar
+@onready var enemy_hp_label = %EnemyHPLabel
 
 
 func _ready():
@@ -29,6 +35,9 @@ func populate_player_creatures(creature_names: Array[String]) -> void:
 		var creature = creature_scene.instantiate() as Creature
 		creature.init_child_refs()
 		creature.hydrate_creature_data(creature_name_key, true)
+		creature.health_bar = player_health_bar
+		creature.name_label = player_name_label
+		creature.hp_label = player_hp_label
 		active_player = creature
 		player_team.add_creature(creature)
 		if creature_name_key == "Salamander":
@@ -40,6 +49,9 @@ func populate_enemy_creatures(creature_names: Array[String]) -> void:
 		var creature = creature_scene.instantiate() as Creature
 		creature.init_child_refs()
 		creature.hydrate_creature_data(creature_name_key, false)
+		creature.health_bar = enemy_health_bar
+		creature.name_label = enemy_name_label
+		creature.hp_label = enemy_hp_label
 		active_enemy = creature
 		enemy_team.add_creature(creature)
 
@@ -81,12 +93,10 @@ func on_ability_used_on_player(ability: Ability):
 
 
 func on_player_creature_set(creature: Creature):
-	pass
-#	current_creature = creature
-#	create_player_nameplate()
+	creature.update_nameplate()
+	active_player = creature
 
 
 func on_enemy_creature_set(creature: Creature):
-	pass
-#	current_creature = creature
-#	create_enemy_nameplate()
+	creature.update_nameplate()
+	active_enemy = creature
