@@ -1,11 +1,11 @@
 ﻿name,type,hp,attack,defense,endurance,magic,resistance,speed,tags,abilities
 Salamander,Fire,50,80,25,20,60,50,80,Fire,"Fireball, Blight, Sludge, Boulder"
 Archon,Holy,50,60,60,40,60,60,50,Holy,"Smite, Fireball, Sludge"
-Shadow,Necrotic,50,35,30,50,75,80,60,Necrotic,
-Gebbu,Earth,80,80,90,80,15,20,10,Earth,
-Grippel,Water,40,60,35,40,60,70,85,Water,
-Chimera,"Air, Fire",60,50,50,50,70,60,40,"Air, Fire",
-Hag,Poison,50,15,40,70,70,80,30,Poison,
-Vampire,"Necrotic, Psychic",50,75,40,50,30,70,70,"Necrotic, Psychic",
-Witch Doctor,"Acid, Poison",50,20,30,50,70,90,40,"Acid, Poison",
-Crabarai,Water,60,60,80,60,10,50,30,Water,
+Shadow,Necrotic,50,35,30,50,75,80,60,Necrotic,Blight
+Gebbu,Earth,80,80,90,80,15,20,10,Earth,Blight
+Grippel,Water,40,60,35,40,60,70,85,Water,Blight
+Chimera,"Air, Fire",60,50,50,50,70,60,40,"Air, Fire",Blight
+Hag,Poison,50,15,40,70,70,80,30,Poison,Blight
+Vampire,"Necrotic, Psychic",50,75,40,50,30,70,70,"Necrotic, Psychic",Blight
+Witch Doctor,"Acid, Poison",50,20,30,50,70,90,40,"Acid, Poison",Blight
+Crabarai,Water,60,60,80,60,10,50,30,Water,Blight

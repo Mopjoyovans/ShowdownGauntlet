@@ -10,30 +10,38 @@ var current_creature: Creature
 var active_enemy: Creature
 var active_player: Creature
 
-@onready var player_team = $PlayerTeam
-@onready var enemy_team = $EnemyTeam
+@onready var player_team: Team = $PlayerTeam
+@onready var enemy_team: Team = $EnemyTeam
 
 
 func _ready():
 	GameEvents.ability_used_on_enemy.connect(on_ability_used_on_enemy)
 	GameEvents.ability_used_on_player.connect(on_ability_used_on_player)
-	populate_creature_data("Salamander", true)
-	populate_creature_data("Archon", false)
+	player_team.active_creature_set.connect(on_player_creature_set)
+	enemy_team.active_creature_set.connect(on_enemy_creature_set)
+	populate_player_creatures(["Salamander", "Archon", "Gebbu", "Grippel"])
+	populate_enemy_creatures(["Chimera", "Shadow", "Hag", "Vampire"])
 	populate_abilities()
 
 
-func populate_creature_data(creature_name: String, is_player: bool) -> void:
-	var creature = creature_scene.instantiate() as Creature
-	creature.init_child_refs()
-	creature.hydrate_creature_data(creature_name, is_player)
-	
-	if is_player:
+func populate_player_creatures(creature_names: Array[String]) -> void:
+	for creature_name_key in creature_names:
+		var creature = creature_scene.instantiate() as Creature
+		creature.init_child_refs()
+		creature.hydrate_creature_data(creature_name_key, true)
 		active_player = creature
-		player_team.add_child(creature)
-		set_current_creature(creature)
-	else:
+		player_team.add_creature(creature)
+		if creature_name_key == "Salamander":
+			set_current_creature(creature)
+
+
+func populate_enemy_creatures(creature_names: Array[String]) -> void:
+	for creature_name_key in creature_names:
+		var creature = creature_scene.instantiate() as Creature
+		creature.init_child_refs()
+		creature.hydrate_creature_data(creature_name_key, false)
 		active_enemy = creature
-		enemy_team.add_child(creature)
+		enemy_team.add_creature(creature)
 
 
 func set_current_creature(creature):
@@ -70,3 +78,15 @@ func on_ability_used_on_player(ability: Ability):
 	if active_player == null:
 		return
 	process_ability(active_player, ability)
+
+
+func on_player_creature_set(creature: Creature):
+	pass
+#	current_creature = creature
+#	create_player_nameplate()
+
+
+func on_enemy_creature_set(creature: Creature):
+	pass
+#	current_creature = creature
+#	create_enemy_nameplate()

@@ -60,7 +60,9 @@ func populate_abilities(ability_data) -> Array:
 	var ability_names = ability_data.split(", ")
 	
 	for ability_name in ability_names:
-		new_abilities.push_front(GameData.abilities[ability_name])
+#		print(str('ability', ability_name))
+		if ability_name != "":
+			new_abilities.push_front(GameData.abilities[ability_name])
 		
 	return new_abilities
 

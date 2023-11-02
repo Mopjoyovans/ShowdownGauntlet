@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvxmdknto76t"]
+[gd_scene load_steps=7 format=3 uid="uid://dvxmdknto76t"]
 
 [ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_bhm8p"]
 [ext_resource type="PackedScene" uid="uid://2efjujnnv734" path="res://scenes/ability/ability.tscn" id="2_evf4p"]
 [ext_resource type="PackedScene" uid="uid://cipsf67vp3tk1" path="res://scenes/battle/ability_button.tscn" id="3_7i80m"]
 [ext_resource type="PackedScene" uid="uid://i0la5munbvb8" path="res://scenes/creature/creature.tscn" id="3_wxd4j"]
+[ext_resource type="Texture2D" uid="uid://dxvwyl1sy3jsl" path="res://assets/object/pokeball.png" id="4_pjt1f"]
+[ext_resource type="PackedScene" uid="uid://e3iwx35wb6rm" path="res://scenes/team/team.tscn" id="6_fwkpf"]
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_bhm8p")
@@ -46,6 +48,96 @@ self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(440, 240)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer"]
+custom_minimum_size = Vector2(110, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(110, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="GridContainer" type="GridContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(110, 80)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.45
+texture = ExtResource("4_pjt1f")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.45
+texture = ExtResource("4_pjt1f")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.45
+texture = ExtResource("4_pjt1f")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/MarginContainer/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.45
+texture = ExtResource("4_pjt1f")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="PanelContainer2" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer"]
+custom_minimum_size = Vector2(110, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PanelContainer2"]
+custom_minimum_size = Vector2(110, 80)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.45
+texture = ExtResource("4_pjt1f")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.45
+texture = ExtResource("4_pjt1f")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.45
+texture = ExtResource("4_pjt1f")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_stretch_ratio = 0.45
+texture = ExtResource("4_pjt1f")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="TextLogPanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1"]
 layout_mode = 2
@@ -102,6 +194,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="PlayerTeam" type="Node2D" parent="."]
+[node name="PlayerTeam" parent="." instance=ExtResource("6_fwkpf")]
 
-[node name="EnemyTeam" type="Node2D" parent="."]
+[node name="EnemyTeam" parent="." instance=ExtResource("6_fwkpf")]
