@@ -30,7 +30,7 @@ func init_child_refs():
 	health_component = $HealthComponent
 
 
-func hydrate_creature_data(creature_name_key: String, is_player: bool) -> Creature:
+func hydrate_creature_data(creature_name_key: String) -> Creature:
 	var creature_data = GameData.creatures[creature_name_key]
 	creature_name = creature_data.name
 	attack = int(creature_data.attack)

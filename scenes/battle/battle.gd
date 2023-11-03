@@ -9,6 +9,8 @@ class_name Battle
 var current_creature: Creature
 var active_enemy: Creature
 var active_player: Creature
+var player_team_buttons: Array[Button]
+var enemy_team_labels: Array[Label]
 
 @onready var player_team: Team = $PlayerTeam
 @onready var enemy_team: Team = $EnemyTeam
@@ -18,42 +20,60 @@ var active_player: Creature
 @onready var enemy_name_label = %EnemyNameLabel
 @onready var enemy_health_bar = %EnemyHealthBar
 @onready var enemy_hp_label = %EnemyHPLabel
-
+@onready var creature_button = %CreatureButton
+@onready var creature_button_2 = %CreatureButton2
+@onready var creature_button_3 = %CreatureButton3
+@onready var creature_button_4 = %CreatureButton4
+@onready var creature_label = %CreatureLabel
+@onready var creature_label_2 = %CreatureLabel2
+@onready var creature_label_3 = %CreatureLabel3
+@onready var creature_label_4 = %CreatureLabel4
 
 func _ready():
 	GameEvents.ability_used_on_enemy.connect(on_ability_used_on_enemy)
 	GameEvents.ability_used_on_player.connect(on_ability_used_on_player)
 	player_team.active_creature_set.connect(on_player_creature_set)
 	enemy_team.active_creature_set.connect(on_enemy_creature_set)
+	player_team_buttons = [creature_button, creature_button_2, creature_button_3, creature_button_4]
+	enemy_team_labels = [creature_label, creature_label_2, creature_label_3, creature_label_4]
 	populate_player_creatures(["Salamander", "Archon", "Gebbu", "Grippel"])
 	populate_enemy_creatures(["Chimera", "Shadow", "Hag", "Vampire"])
 	populate_abilities()
 
 
 func populate_player_creatures(creature_names: Array[String]) -> void:
+	var index: int = 0
+
 	for creature_name_key in creature_names:
 		var creature = creature_scene.instantiate() as Creature
 		creature.init_child_refs()
-		creature.hydrate_creature_data(creature_name_key, true)
+		creature.hydrate_creature_data(creature_name_key)
 		creature.health_bar = player_health_bar
 		creature.name_label = player_name_label
 		creature.hp_label = player_hp_label
 		active_player = creature
 		player_team.add_creature(creature)
+		player_team_buttons[index].text = creature_name_key
 		if creature_name_key == "Salamander":
 			set_current_creature(creature)
+		
+		index += 1
 
 
 func populate_enemy_creatures(creature_names: Array[String]) -> void:
+	var index: int = 0
+	
 	for creature_name_key in creature_names:
 		var creature = creature_scene.instantiate() as Creature
 		creature.init_child_refs()
-		creature.hydrate_creature_data(creature_name_key, false)
+		creature.hydrate_creature_data(creature_name_key)
 		creature.health_bar = enemy_health_bar
 		creature.name_label = enemy_name_label
 		creature.hp_label = enemy_hp_label
 		active_enemy = creature
+		enemy_team_labels[index].text = creature_name_key
 		enemy_team.add_creature(creature)
+		index += 1
 
 
 func set_current_creature(creature):
