@@ -32,13 +32,14 @@ var enemy_team_labels: Array[Label]
 func _ready():
 	GameEvents.ability_used_on_enemy.connect(on_ability_used_on_enemy)
 	GameEvents.ability_used_on_player.connect(on_ability_used_on_player)
+	GameEvents.switched_creature.connect(on_player_creature_set)
 	player_team.active_creature_set.connect(on_player_creature_set)
 	enemy_team.active_creature_set.connect(on_enemy_creature_set)
 	player_team_buttons = [creature_button, creature_button_2, creature_button_3, creature_button_4]
 	enemy_team_labels = [creature_label, creature_label_2, creature_label_3, creature_label_4]
 	populate_player_creatures(["Salamander", "Archon", "Gebbu", "Grippel"])
 	populate_enemy_creatures(["Chimera", "Shadow", "Hag", "Vampire"])
-	populate_abilities()
+	populate_abilities(player_team.get_creature_by_name("Salamander"))
 
 
 func populate_player_creatures(creature_names: Array[String]) -> void:
@@ -54,6 +55,7 @@ func populate_player_creatures(creature_names: Array[String]) -> void:
 		active_player = creature
 		player_team.add_creature(creature)
 		player_team_buttons[index].text = creature_name_key
+		player_team_buttons[index].creature = creature
 		if creature_name_key == "Salamander":
 			set_current_creature(creature)
 		
@@ -76,26 +78,27 @@ func populate_enemy_creatures(creature_names: Array[String]) -> void:
 		index += 1
 
 
-func set_current_creature(creature):
-	current_creature = creature
-	
-	
-func populate_abilities():
-	if ability_buttons == null or current_creature == null or current_creature.abilities == null:
+func populate_abilities(creature: Creature):
+	if ability_buttons == null or creature == null or creature.abilities == null:
 		return
-
-	var index = 0
+	var index: int = 0
 	
 	for button in ability_buttons:
 		var button_node = get_node(button)
-		button_node.text = current_creature.abilities[index].name
-
 		var ability = ability_scene.instantiate() as Ability
-		button_node.ability = ability.hydrate_ability_data(current_creature.abilities[index].name)
-
+		if ability != null and creature.abilities.size() > index:
+			button_node.ability = ability.hydrate_ability_data(creature.abilities[index].name)
+			button_node.text = ability.ability_name
+		else:
+			button_node.text = ""
+			button_node.ability = null
 		index += 1
-		
-		
+
+
+func set_current_creature(creature):
+	current_creature = creature
+	
+
 func process_ability(creature: Creature, ability: Ability):
 	creature.damage(ability.damage)
 
@@ -114,6 +117,7 @@ func on_ability_used_on_player(ability: Ability):
 
 func on_player_creature_set(creature: Creature):
 	creature.update_nameplate()
+	populate_abilities(creature)
 	active_player = creature
 
 

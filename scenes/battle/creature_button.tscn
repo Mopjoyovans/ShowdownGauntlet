@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b711ndmpu0ny3"]
+
+[ext_resource type="Theme" uid="uid://bxlgk8nvt1guh" path="res://team_theme.tres" id="1_ahr4w"]
+[ext_resource type="Script" path="res://scenes/battle/creature_button.gd" id="2_nnuxt"]
+
+[node name="CreatureButton" type="Button"]
+theme = ExtResource("1_ahr4w")
+text = "Creature 1"
+script = ExtResource("2_nnuxt")

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dxvwyl1sy3jsl" path="res://assets/object/pokeball.png" id="4_pjt1f"]
 [ext_resource type="Texture2D" uid="uid://b2pew2xi4fd7e" path="res://assets/creatures/009 Blastoise.png" id="5_22gce"]
 [ext_resource type="PackedScene" uid="uid://e3iwx35wb6rm" path="res://scenes/team/team.tscn" id="6_fwkpf"]
-[ext_resource type="Theme" uid="uid://bxlgk8nvt1guh" path="res://team_theme.tres" id="7_h0ycv"]
+[ext_resource type="PackedScene" uid="uid://b711ndmpu0ny3" path="res://scenes/battle/creature_button.tscn" id="7_p6ub6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mqtk"]
 bg_color = Color(0.219608, 0.219608, 0.219608, 1)
@@ -186,11 +186,9 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="CreatureButton" type="Button" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
+[node name="CreatureButton" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer" instance=ExtResource("7_p6ub6")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("7_h0ycv")
-text = "Creature 1"
 
 [node name="TextureRect2" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -200,10 +198,9 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="CreatureButton2" type="Button" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
+[node name="CreatureButton2" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer" instance=ExtResource("7_p6ub6")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("7_h0ycv")
 
 [node name="TextureRect3" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -213,10 +210,9 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="CreatureButton3" type="Button" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
+[node name="CreatureButton3" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer" instance=ExtResource("7_p6ub6")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("7_h0ycv")
 
 [node name="TextureRect4" type="TextureRect" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -226,10 +222,9 @@ texture = ExtResource("4_pjt1f")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="CreatureButton4" type="Button" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer"]
+[node name="CreatureButton4" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer/PlayerTeamMarginContainer/PlayerTeamPanelContainer/GridContainer" instance=ExtResource("7_p6ub6")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("7_h0ycv")
 
 [node name="EnemyTeamPanelContainer" type="PanelContainer" parent="BattleUI/Control/MarginContainer/VBoxContainer/HBoxContainer1/BattlePanelContainer"]
 custom_minimum_size = Vector2(110, 80)
