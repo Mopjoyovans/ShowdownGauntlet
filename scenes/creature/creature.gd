@@ -60,10 +60,15 @@ func populate_abilities(ability_data) -> Array:
 func damage(damage_amount: float):
 	health_component.damage(damage_amount)
 
+
+func is_alive() -> bool:
+	return health_component.current_health > 0
+
 	
 func update_nameplate():
 	name_label.text = creature_name
 	hp_label.text = str(health_component.current_health, "/", health_component.max_health)
+	update_health_display()
 
 
 func update_health_display():

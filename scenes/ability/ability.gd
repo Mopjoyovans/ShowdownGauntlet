@@ -18,7 +18,6 @@ func hydrate_ability_data(ability_name_key: String) -> Ability:
 
 
 func use_ability(target_is_enemy: bool):
-	print(str("use ability ", ability_name))
 	if target_is_enemy:
 		GameEvents.emit_ability_used_on_enemy(self)
 	else:

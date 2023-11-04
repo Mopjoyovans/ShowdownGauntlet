@@ -6,9 +6,6 @@ class_name Battle
 @export var creature_scene: PackedScene
 @export var ability_buttons: Array
 
-var current_creature: Creature
-var active_enemy: Creature
-var active_player: Creature
 var player_team_buttons: Array[Button]
 var enemy_team_labels: Array[Label]
 
@@ -52,13 +49,9 @@ func populate_player_creatures(creature_names: Array[String]) -> void:
 		creature.health_bar = player_health_bar
 		creature.name_label = player_name_label
 		creature.hp_label = player_hp_label
-		active_player = creature
 		player_team.add_creature(creature)
 		player_team_buttons[index].text = creature_name_key
 		player_team_buttons[index].creature = creature
-		if creature_name_key == "Salamander":
-			set_current_creature(creature)
-		
 		index += 1
 
 
@@ -72,7 +65,6 @@ func populate_enemy_creatures(creature_names: Array[String]) -> void:
 		creature.health_bar = enemy_health_bar
 		creature.name_label = enemy_name_label
 		creature.hp_label = enemy_hp_label
-		active_enemy = creature
 		enemy_team_labels[index].text = creature_name_key
 		enemy_team.add_creature(creature)
 		index += 1
@@ -95,32 +87,26 @@ func populate_abilities(creature: Creature):
 		index += 1
 
 
-func set_current_creature(creature):
-	current_creature = creature
-	
-
 func process_ability(creature: Creature, ability: Ability):
 	creature.damage(ability.damage)
 
 
 func on_ability_used_on_enemy(ability: Ability):
-	if active_enemy == null:
+	if enemy_team.active_creature == null:
 		return
-	process_ability(active_enemy, ability)
+	process_ability(enemy_team.active_creature, ability)
 	
 	
 func on_ability_used_on_player(ability: Ability):
-	if active_player == null:
+	if player_team.active_creature == null:
 		return
-	process_ability(active_player, ability)
+	process_ability(player_team.active_creature, ability)
 
 
 func on_player_creature_set(creature: Creature):
 	creature.update_nameplate()
 	populate_abilities(creature)
-	active_player = creature
 
 
 func on_enemy_creature_set(creature: Creature):
 	creature.update_nameplate()
-	active_enemy = creature
